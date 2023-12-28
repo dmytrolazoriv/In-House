@@ -4,6 +4,10 @@
 
     {% render 'nav-list', handle: 'main-menu' %}
 
+    <a href="{{ routes.search_url }}">Search</a>
+
+    {% render 'currency-picker' %}
+
     <a href="{{ routes.cart_url }}"> 
         {{ 'cart.button.count_html' | t: itemCount: cart.item_count }}
     </a>

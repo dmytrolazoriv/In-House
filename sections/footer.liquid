@@ -1,0 +1,11 @@
+<div id="footer-global">
+    <a href="{{ routes.root_url }}">{{ 'general.shop.title' | t }}</a>
+    {% render 'nav-list', handle: 'main-menu' %}
+    {% render 'nav-list', handle: 'footer' %}
+
+    {% assign copyright_date = 'now' | date: '%Y' %}
+    <span class="copyright-info">
+        {{ 'footer.bottom.copyright' | t: date: copyright_date }}
+        </span>
+    {% render 'currency-picker' %}
+</div>

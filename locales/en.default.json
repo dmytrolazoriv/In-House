@@ -23,7 +23,7 @@
   "collection": {
     "sort": {
       "price_low_high": "Price, $-$$$",
-      "price_high_low:": "Price, $$$-$"
+      "price_high_low": "Price, $$$-$"
     },
     "form": {
       "quantity": "Quantity",

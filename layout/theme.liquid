@@ -8,17 +8,19 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     {{ content_for_header }}
     {{ 'style.css' | asset_url | stylesheet_tag }}
+    <script src="{{ 'jquery-3.3.1.min.js' | asset_url }}" defer="defer"></script>
     <script src="{{ 'script.js' | asset_url }}" defer="defer"></script>
-</head>
+</head> 
 <body>
 
-    {% render 'header' %}
+    {% section 'header' %}
 
     <main role="main">
         {{ content_for_layout }}
 
-        {% render 'footer' %}
+        {% section 'footer' %}
     </main>
 
+    {% section 'currencies' %}
 </body>
 </html>
