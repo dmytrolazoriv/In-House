@@ -1,40 +1,33 @@
-<div id="search-page" class="wrapper">
-    {% paginate search.results by 10 %}
+<div id="page-search">
+    {% render 'search-form' %}
 
-        <h2 class="search-title">{{ 'general.search.search' | t }}</h2>
+    {%- if search.performed -%}
+        <div id="search-results">
+        {%- assign product_count = 0 | times: 1 -%}
+        {%- for item in search.results -%}
+            {%- if item.object_type == 'product' -%}
+                {%- assign product_count = product_count | plus: 1 -%}
+            {%- endif -%}
+        {%- endfor -%}
 
-        <form class="search-form" action="{{ routes.search_url }}" method="get" role="search">
-            <input class="search-input field-input"
-                   type="search"
-                   name="q"
-                   value="{{ search.terms | escape }}"
-                   placeholder="{{ 'general.search.search' | t }}"
-            >
-            <button class="search-button button" type="submit">{{ 'general.search.search' | t }}</button>
-        </form>
+        {%- if product_count > 0 -%}
+            {%- assign filled_singular = 'search.results.filled_singular' | t -%}
+            {%- assign filled_plural = 'search.results.filled_plural' | t -%}
 
-        {% if search.performed %}
-            {% for item in search.results %}
-                {% comment %}<span style="background-color: red; position: absolute;">{{ item }}</span>{% endcomment %}
-                <div class="result-wrapper">
-                    <div class="result-image">
-                        {% if item.featured_image %}
-                            <a href="{{ item.url | within: collection }}" title="{{ item.title | escape }}">
-                                {{ item.featured_image.src | image_url: width: 600 | image_tag: class: 'search-image', loading: lazy }}
-                            </a>
-                        {% endif %}
-                    </div>
-                    <div class="result-content">
-                        <h2 class="search-title">{{ item.title | link_to: item.url }}</h2>
-                        <p class="search-description">{{ item.content | strip_html | truncatewords: 50 }}</p>
-                    </div>
-                </div>
-            {% else %}
-                <p class="search-results">{{ 'general.search.no_results' | t }}</p>
-            {% endfor %}
-        {% endif %}
+            <h2>{{ product_count }} {{ product_count | pluralize: filled_singular, filled_plural }}</h2>
 
-        {% if paginate.pages > 1 %}{{ paginate | default_pagination }}{% endif %}
+            <div class="results-grid">
+                {%- for item in search.results -%}
+                    {%- if item.object_type == 'product' -%}
+                        {% render 'product-card', product: item %}
+                    {%- endif -%}
+                {%- endfor -%}
+            </div>
 
-    {% endpaginate %}
+        {%- else -%}
+            <h2>{{ 'search.results.empty' | t: searchTerms: search.terms }}</h2>
+        {%- endif -%}
+        </div>
+    {%- endif -%}
+
 </div>

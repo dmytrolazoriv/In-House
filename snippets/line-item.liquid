@@ -1,0 +1,40 @@
+<div class="line-item">
+    
+    <div class="line-image">
+        {{ item | image_url: width: 80, height: 80, crop: 'center' | image_tag }}
+    </div>
+
+    <div class="line-info">
+        <div class="info-content">
+            <div class="line-title">
+                <a href="{{ item.url }}">
+                    {{ item.product.title }}
+                    {%- if item.quantity > 1 -%}
+                        <span class="quantity">
+                            x{{ item.quantity }}
+                        </span>
+                    {%- endif -%}
+                </a>
+                {{ item.variant.title }}
+            </div>
+
+            <div class="line-price">
+            {{ item.line_price | money }}{% if item.quantity > 1 %} ({{ item.price | money }}/ea){% endif %}
+            </div>
+        </div>
+
+        <div class="info-actions">
+            {%- assign quantity_id = 'updates_' | append: item.key -%}
+            {% render 'quantity-picker' name: 'updates[]', id: quantity_id,
+            value: item.quantity, min: 0, max: item.variant.inventory_quantity,
+            field_class: 'js-line-quantity' %}
+
+            <a
+                class="js-remove-line"
+                href="/cart/change?line={{ line_index }}&amp;quantity=0"
+                >
+                X
+            </a>
+        </div>
+    </div>
+</div>

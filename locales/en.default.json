@@ -22,8 +22,10 @@
   },
   "collection": {
     "sort": {
+      "title": "Sort",
       "price_low_high": "Price, $-$$$",
-      "price_high_low": "Price, $$$-$"
+      "price_high_low": "Price, $$$-$",
+      "clear": "Clear"
     },
     "form": {
       "quantity": "Quantity",
@@ -42,13 +44,15 @@
     "filled": {
       "title": "Your Cart",
       "subtotal": "Subtotal",
+      "update": "Update",
       "button": "Checkout",
       "currency_note_html": "We process all orders in {{ currency }}. While the contents of your cart are currently displayed in <span class=\\\"js-active-currency\\\"></span>, the checkout will use {{ currency }} at the current exchange rate."
     }
   },
   "product": {
     "card": {
-      "options_styles": "{{ optionCount }} options / {{ styleCount }} styles"
+      "options_styles_singular": "{{ optionCount }} option / {{ styleCount }} styles",
+      "options_styles_plural": "{{ optionCount }} options / {{ styleCount }} styles"
     },
     "slider": {
       "count": "{{ slideStart }} of {{ slideTotal }}"
@@ -63,7 +67,20 @@
     },
     "form": {
       "submit": "Add to Cart",
-      "sold_out": "Sold Out"
+      "sold_out": "Sold Out",
+      "quantity": "Quantity"
+    }
+  },
+  "search": {
+    "form": {
+      "label": "Search In—House",
+      "placeholder": "Your search term",
+      "submit": "Submit"
+    },
+    "results": {
+      "empty": "No results for {{ searchTerms }}",
+      "filled_singular": "result",
+      "filled_plural": "results"
     }
   }
 }

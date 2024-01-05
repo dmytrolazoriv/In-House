@@ -1,1 +1,10 @@
-{% render 'error-404' %}
+<div id="page-404">
+    <h2>{{ 'general.404.error_code' | t }}</h2>
+
+    {%- assign search_label = 'general.404.title' | t -%}
+    {% render 'search-form', label: search_label %}
+
+    <a href="{{ routes.root_url }}" class="button">
+        {{ 'general.404.back' | t }}
+    </a>
+</div>

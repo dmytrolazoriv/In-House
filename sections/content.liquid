@@ -1,0 +1,289 @@
+<div class="content-wrap">
+  {%- for block in section.blocks -%}
+    <div class="content-block-{{ block.type }}" {{ block.shopify_attributes }}>
+    {%- case block.type -%}
+    {%- when 'collection' -%}
+      {% comment %}Begin Collection Block{% endcomment %}
+      {%- assign collection = collections['collection-0'] -%}
+
+      <div class="collection-block-info">
+        <h2>
+          {%- if block.settings.title != blank -%}
+            {{ block.settings.title }}
+          {%- else -%}
+            {{ collection.title }}
+          {%- endif -%}
+        </h2>
+
+        <p>
+          {%- if block.settings.content != blank -%}
+            {{ block.settings.content }}
+          {%- else -%}
+            {{ collection.description }}
+          {%- endif -%}
+        </p>
+
+
+        {%- if block.settings.show_button -%}
+          <a href="{{ collection.url }}" class="button">
+            {%- if block.settings.button_text != blank -%}
+              {{ block.settings.button_text }}
+            {%- else -%}
+              {{ 'general.shop.shop_now' | t }}
+            {%- endif -%}
+          </a>
+        {%- endif -%}
+      </div>
+
+      {%- for product in collection.products limit: block.settings.max_products -%}
+        {% render 'product-card' product: product %}
+      {%- endfor -%}
+      {% comment %}End Collection Block{% endcomment %}
+
+    {%- when 'image_text' -%}
+      {% comment %}Begin Image&Text Block{% endcomment %}
+      <div class="image-text direction-{{ block.settings.direction }}">
+
+        {%- if block.settings.image != blank -%}
+          <div class="block-image">
+            {{ block.settings.image |
+            image_url: width: 3240 |
+            image_tag: widths: '810, 1080, 1620', style: 'width: 1440px' }}
+          </div>
+        {%- endif -%}
+
+        <div class="block-content">
+          {%- if block.settings.title != blank -%}
+            <h3>{{ block.settings.title }}</h3>
+          {%- endif -%}
+          
+          {%- if block.settings.content != blank -%}
+            <p>{{ block.settings.content }}</p>
+          {%- endif -%}
+      
+          {%- if block.settings.show_button and block.settings.button_url != blank -%}
+            <a href="{{ block.settings.button_url }}">
+              {%- if block.settings.button_text != blank -%}
+              {{ block.settings.button_text }}
+              {%- else -%}
+              {{ 'general.shop.shop_now' | t }}
+            {%- endif -%}
+            </a>
+          {%- endif -%}
+        </div>
+
+      </div>
+      {% comment %}End Image&Text Block{% endcomment %}
+    {%- when 'quote' -%}
+      {% comment %}Begin Quote Block{% endcomment %}
+      <blockquote cite="">
+        <p>
+          {{ block.settings.content | newline_to_br }}
+        </p>
+        <footer>{{ block.settings.author }}<br><cite>{{ block.settings.source | newline_to_br }}</cite></footer>
+      </blockquote>
+
+      {%- if block.settings.show_button and block.settings.button_url != blank -%}
+        <a href="{{ block.settings.button_url }}">
+          {%- if block.settings.button_text != blank -%}
+          {{ block.settings.button_text }}
+          {%- else -%}
+          {{ 'general.shop.read_more' | t }}
+        {%- endif -%}
+        </a>
+      {%- endif -%}
+      {% comment %}End Quote Block{% endcomment %}
+    {%- endcase -%}
+    </div>
+  {%- endfor -%}
+</div>
+
+{% schema %}
+    {
+      "name": "Page Content",
+      "class": "page-content-section",
+      "settings": [],
+      "blocks": [
+        {
+          "name": "Collection",
+          "type": "collection",
+          "settings": [
+            {
+            "type": "collection",
+            "id": "collection",
+            "label": "Collection"
+            },
+            {
+            "type": "range",
+            "id": "max_products",
+            "min": 2,
+            "max": 6,
+            "step": 1,
+            "unit": "ct",
+            "label": "Products to Show",
+            "default": 2
+            },
+            {
+            "type": "text",
+            "id": "title",
+            "label": "Title",
+            "info": "Defaults to \"Collection Title\""
+            },
+            {
+            "type": "textarea",
+            "id": "content",
+            "label": "Content"
+            },
+            {
+            "type": "checkbox",
+            "id": "show_button",
+            "label": "Show button?",
+            "default": true
+            },
+            {
+            "type": "text",
+            "id": "button_text",
+            "label": "Button Text",
+            "default": "Shop Now",
+            "info": "Defaults to \"Shop Now\""
+            }
+          ]
+        },
+        {
+          "name": "Image & Text",
+          "type": "image_text",
+          "settings": [
+            {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+            },
+            {
+            "type": "text",
+            "id": "title",
+            "label": "Title",
+            "default": "Title"
+            },
+            {
+            "type": "textarea",
+            "id": "content",
+            "label": "Content"
+            },
+            {
+            "type": "checkbox",
+            "id": "show_button",
+            "label": "Show button?",
+            "default": true
+            },
+            {
+            "type": "url",
+            "id": "button_url",
+            "label": "Button URL"
+            },
+            {
+            "type": "text",
+            "id": "button_text",
+            "label": "Button Text",
+            "default": "Shop Now",
+            "info": "Defaults to \"Shop Now\""
+            },
+            {
+            "type": "select",
+            "id": "direction",
+            "label": "Direction",
+            "options": [
+                {
+                "value": "rtl",
+                "label": "Image → Text"
+                },
+                {
+                "value": "ltr",
+                "label": "Text ← Image"
+                }
+            ],
+            "default": "rtl"
+            }
+          ]
+        },
+        {
+          "name": "Quote",
+          "type": "quote",
+          "settings": [
+            {
+            "type": "textarea",
+            "id": "content",
+            "label": "Content"
+            },
+            {
+            "type": "text",
+            "id": "author",
+            "label": "Author"
+            },
+            {
+            "type": "textarea",
+            "id": "source",
+            "label": "Source"
+            },
+            {
+            "type": "checkbox",
+            "id": "show_button",
+            "label": "Show button?",
+            "default": true
+            },
+            {
+            "type": "url",
+            "id": "button_url",
+            "label": "Button URL"
+            },
+            {
+            "type": "text",
+            "id": "button_text",
+            "label": "Button Text",
+            "default": "Read More",
+            "info": "Defaults to \"Read More\""
+            }
+          ]
+        }
+      ],
+      "presets": [
+        {
+          "name": "Page Content",
+          "blocks": [
+            {
+              "type": "collection",
+              "settings": {
+                "collection": "collection-0",
+                "title": "Collection Title",
+                "content": "Lorem ipsum dolor sit amet",
+                "show_button": true
+              }
+            },
+            {
+              "type": "image_text",
+              "settings": {
+                "title": "New Block 1",
+                "content": "Lorem ipsum dolor sit amet",
+                "show_button": true,
+                "button_url": "#"
+              }
+            },
+            {
+              "type": "image_text",
+              "settings": {
+                "title": "Block 2",
+                "content": "Lorem ipsum dolor sit amet",
+                "show_button": false,
+                "button_url": "#",
+                "direction": "ltr"
+              }
+            }
+          ]
+        }
+      ],
+      "enabled_on": {
+        "templates": [
+          "*"
+        ]
+      }
+    }
+    {% endschema %}

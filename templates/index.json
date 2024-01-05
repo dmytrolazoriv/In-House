@@ -1,11 +1,78 @@
 {
-  "name": "Index",
   "sections": {
-    "main": {
-      "type": "main-index"
+      "slideshow": {
+        "type": "slideshow",
+        "blocks": {
+          "slide_1": {
+            "type": "slide",
+            "settings": {
+              "title": "Slide 1",
+              "content": "Some slide 1 content",
+              "button_url": "#",
+              "button_text": "Slide Button"
+            }
+          },
+          "slide_2": {
+            "type": "slide",
+            "settings": {
+              "title": "Slide 2",
+              "content": "Lorem ipsum dolor sit amet",
+              "button_url": "#"
+            }
+          }
+        },
+      "block_order": [
+        "slide_1",
+        "slide_2"
+      ],
+    "settings": {
+      "autoplay": true,
+      "autoplay_speed": 6500
+    }
+    },
+    "content": {
+      "type": "content",
+      "blocks": {
+        "collection": {
+          "type": "collection",
+          "settings": {
+            "collection": "collection-0",
+            "title": "Collection Title",
+            "content": "Lorem ipsum dolor sit amet",
+            "show_button": true
+          }
+        },
+        "image_text_1": {
+          "type": "image_text",
+          "settings": {
+            "title": "New Block 1",
+            "content": "Lorem ipsum dolor sit amet",
+            "show_button": true,
+            "button_url": "#"
+          }
+        },
+        "image_text_2": {
+          "type": "image_text",
+          "settings": {
+            "title": "Block 2",
+            "content": "Lorem ipsum dolor sit amet",
+            "show_button": false,
+            "button_url": "#",
+            "direction": "ltr"
+          }
+        }
+      },
+      "block_order": [
+        "collection",
+        "image_text_1",
+        "image_text_2"
+      ],
+      "settings": {
+      }
     }
   },
   "order": [
-    "main"
+    "slideshow",
+    "content"
   ]
 }

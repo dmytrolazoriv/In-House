@@ -1,0 +1,129 @@
+<div class="slideshow-wrap" data-autoplay="{{ section.settings.autoplay }}" data-autoplay-speed="{{ section.settings.autoplay_speed }}">
+  {%- for block in section.blocks -%}
+    <div class="slide" {{ block.shopify_attributes }}>
+
+    {%- if block.settings.image != blank -%}
+      <div class="slide-image">
+        {{ block.settings.image |
+        image_url: width: 3240 |
+        image_tag: widths: '810, 1080, 1620', style: 'width: 1440px' }}
+      </div>
+    {%- endif -%}
+
+    <div class="slide-content">
+      {%- if block.settings.title != blank -%}
+        <h1>{{ block.settings.title }}</h1>
+      {%- endif -%}
+      
+      {%- if block.settings.content != blank -%}
+        <p>{{ block.settings.content }}</p>
+      {%- endif -%}
+  
+      {%- if block.settings.button_url != blank -%}
+        <a href="{{ block.settings.button_url }}">
+          {%- if block.settings.button_text != blank -%}
+          {{ block.settings.button_text }}
+          {%- else -%}
+          {{ 'general.shop.shop_now' | t }}
+        {%- endif -%}
+        </a>
+      {%- endif -%}
+    </div>
+
+    </div>
+  {%- endfor -%}
+</div>
+ 
+{% schema %}
+{
+  "name": "Slideshow",
+  "class": "hero-slideshow",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "autoplay",
+      "label": "Autoplay Slideshow",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "autoplay_speed",
+      "min": 2000,
+      "max": 8000,
+      "step": 500,
+      "unit": "ms",
+      "label": "Autoplay Speed",
+      "default": 5000
+    }
+  ],
+  "blocks": [
+    {
+      "name": "Slide",
+      "type": "slide",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Slide Title"
+        },
+        {
+          "type": "textarea",
+          "id": "content",
+          "label": "Slide Content"
+        },
+        {
+          "type": "url",
+          "id": "button_url",
+          "label": "Button URL"
+        },
+        {
+          "type": "text",
+          "id": "button_text",
+          "label": "Button Text",
+          "default": "Shop Now",
+          "info": "Defaults to \"Shop Now\""
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Slideshow",
+      "settings": {
+        "autoplay": true,
+        "autoplay_speed": 6500
+      },
+      "blocks": [
+        {
+          "type": "slide",
+          "settings": {
+            "title": "Slide 1",
+            "content": "Some slide 1 content",
+            "button_url": "#",
+            "button_text": "Slide Button"
+          }
+        },
+        {
+          "type": "slide",
+          "settings": {
+            "title": "Slide 2",
+            "content": "Lorem ipsum dolor sit amet",
+            "button_url": "#"
+          }
+        }
+      ]
+    }
+  ],
+  "enabled_on": {
+    "templates": [
+      "*"
+    ]
+  }
+}
+{% endschema %}

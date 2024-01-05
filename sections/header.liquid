@@ -8,7 +8,7 @@
 
     {% render 'currency-picker' %}
 
-    <a href="{{ routes.cart_url }}"> 
+    <a class="js-cart-link" href="{{ routes.cart_url }}"> 
         {{ 'cart.button.count_html' | t: itemCount: cart.item_count }}
     </a>
 </div>

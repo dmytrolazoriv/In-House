@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="{{ request.locale.iso_code }}">
 <head>
     <title>{{ page.title }}</title>
     <meta charset="UTF-8">
@@ -8,12 +8,14 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     {{ content_for_header }}
     {{ 'style.css' | asset_url | stylesheet_tag }}
-    <script src="{{ 'jquery-3.3.1.min.js' | asset_url }}" defer="defer"></script>
-    <script src="{{ 'script.js' | asset_url }}" defer="defer"></script>
 </head> 
 <body>
 
     {% section 'header' %}
+
+    {% if template != 'cart' %}
+        {% render 'mini-cart' %}
+    {% endif %}
 
     <main role="main">
         {{ content_for_layout }}
@@ -21,6 +23,13 @@
         {% section 'footer' %}
     </main>
 
-    {% section 'currencies' %}
+    <script src="{{ 'jquery-3.3.1.min.js' | asset_url }}"></script>
+    {% if settings.show_multiple_currencies %}
+        {{ "//cdn.shopify.com/s/javascripts/currencies.js" | script_tag }}
+        {{ "jquery.currencies.min.js" | asset_url | script_tag }}
+    {% endif %}
+    {% render 'currencies' %}
+    {{ 'script.js' | asset_url | script_tag }}
+
 </body>
 </html>
