@@ -57,6 +57,9 @@
     "slider": {
       "count": "{{ slideStart }} of {{ slideTotal }}"
     },
+    "description": {
+      "title": "Information"
+    },
     "shipping": {
       "title": "Shipping",
       "content": "Products ship via FedEx within 48 hours of order. Due to the nature of our products, signature confirmation is required upon delivery. For more information, see the Delivery & Returns page."
@@ -69,6 +72,14 @@
       "submit": "Add to Cart",
       "sold_out": "Sold Out",
       "quantity": "Quantity"
+    },
+    "more": {
+      "vendor": "by {{ vendor }}"
+    },
+    "colors": {
+      "white": "ffffff",
+      "black": "000000",
+      "raw": "707070"
     }
   },
   "search": {

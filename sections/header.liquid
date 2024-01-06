@@ -1,10 +1,16 @@
 <div id="header-global">
 
-    <a href="{{ routes.root_url }}">{{ 'general.shop.title' | t }}</a>
+    <a href="{{ routes.root_url }}">
+        {%- assign shop_title = 'general.shop.title' | t -%}
+        {% render 'logo', svg: 'logo.svg', alt: shop_title, class: 'logo-main' %}
+    </a>
 
     {% render 'nav-list', handle: 'main-menu' %}
 
-    <a href="{{ routes.search_url }}">Search</a>
+    <a href="{{ routes.search_url }}">
+        Search
+        {% render 'icon-search', svg: 'icon-search.svg' %}
+    </a>
 
     {% render 'currency-picker' %}
 

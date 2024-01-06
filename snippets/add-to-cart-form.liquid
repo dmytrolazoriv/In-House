@@ -54,23 +54,35 @@
             </label>
 
             <div class="option-values">
-                {%- if type == 'select' or option.name != 'Color' -%}
-
-                    <select name="{{ option_name }}" id="select-{{ option_name }}">
-                        <option value="placeholder" disabled {% if selected == false %}selected{% endif %}>Select {{ option.name }}</option>
-                        {%- for value in option.values -%}
-                            <option value="{{ value }}" {% if value == selected %}selected{% endif %}>{{ value }}</option>
-                        {%- endfor -%}
-                    </select>
+                {%- if type == 'select' or option.name == 'Color' -%}
+                    
+                    {%- for value in option.values -%}
+                        {%- assign radio_id = 'option-' | append: option_name | 
+                        append: '-' | append: value | handleize -%}
+                        {%- assign force_colors = true -%}
+                        <input
+                            id="{{ radio_id }}"
+                            type="radio"
+                            name="{{ option_name }}"
+                            value="{{ value }}" {% if value == selected %}checked{% endif %}
+                                    >
+                        <label for="{{ radio_id }}">
+                            {%- if force_colors == true -%}
+                                {% render 'color-swatch', value: value %}
+                            {%- else -%} 
+                                {{ value }}
+                            {%- endif -%}
+                            </label>
+                    {%- endfor -%}
 
                 {%- else -%}
 
+                <select name="{{ option_name }}" id="select-{{ option_name }}">
+                    <option value="placeholder" disabled {% if selected == false %}selected{% endif %}>Select {{ option.name }}</option>
                     {%- for value in option.values -%}
-                        {% assign radio_id = 'option-' | append: option_name | 
-                        append: '-' | append: value | handleize %}
-                        <input id="{{ radio_id }}" type="radio" name="{{ option_name }}" value="{{ value }}" {% if value == selected %}checked{% endif %}>
-                        <label for="{{ radio_id }}">{{ value }}</label>
+                        <option value="{{ value }}" {% if value == selected %}selected{% endif %}>{{ value }}</option>
                     {%- endfor -%}
+                </select>
 
                 {%- endif -%}
             </div>
@@ -86,13 +98,17 @@
     value="{% if has_selected_variant %}{{ product.selected_variant.id }}{% elsif has_multiple_variants != true %}{{ product.variants.first.id }}{% endif %}"
 >
 
-<span class="js-price" data-default-price="{{ product.price | money }}">
-    {%- assign current_variant = product.selected_or_first_available_variant -%}
-    {{ current_variant.price | money }}
-</span>
-
-<label for="Quantity">Quantity</label>
-<input type="number" name="quantity" id="quantity" value="1" min="1">
-<button type="submit" name="add" id="add-to-cart-button" {% if can_add_to_cart != true %}disabled{% endif %}>Add to cart</button>
+<button
+    type="submit"
+    name="add"
+    id="add-to-cart-button" {% if can_add_to_cart != true %}disabled{% endif %}
+    >
+    {{ 'product.form.submit' | t }}
+    &ndash;
+    <span class="js-price" data-default-price="{{ product.price | money }}">
+        {%- assign current_variant = product.selected_or_first_available_variant -%}
+        {{ current_variant.price | money }}
+    </span>
+</button>
 
 </form>
