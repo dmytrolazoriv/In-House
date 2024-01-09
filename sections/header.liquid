@@ -1,20 +1,23 @@
 <div id="header-global">
+    <div class="header-left">
+        <a class="link-logo" href="{{ routes.root_url }}">
+            {%- assign shop_title = 'general.shop.title' | t -%}
+            {% render 'logo', svg: 'logo.svg', alt: shop_title, class: 'logo-main' %}
+        </a>
 
-    <a href="{{ routes.root_url }}">
-        {%- assign shop_title = 'general.shop.title' | t -%}
-        {% render 'logo', svg: 'logo.svg', alt: shop_title, class: 'logo-main' %}
-    </a>
+        {% render 'nav-list', handle: 'main-menu', class: 'header-nav-list' %}
+    </div>
 
-    {% render 'nav-list', handle: 'main-menu' %}
+    <div class="header-right">
+        <a class="text-link" href="{{ routes.search_url }}">
+            Search
+            {% render 'icon-search', svg: 'icon-search.svg' %}
+        </a>
 
-    <a href="{{ routes.search_url }}">
-        Search
-        {% render 'icon-search', svg: 'icon-search.svg' %}
-    </a>
+        {% render 'currency-picker' %}
 
-    {% render 'currency-picker' %}
-
-    <a class="js-cart-link" href="{{ routes.cart_url }}"> 
-        {{ 'cart.button.count_html' | t: itemCount: cart.item_count }}
-    </a>
+        <a class="text-link cart-link js-cart-link" href="{{ routes.cart_url }}"> 
+            {{ 'cart.button.count_html' | t: itemCount: cart.item_count }}
+        </a>
+    </div>
 </div>

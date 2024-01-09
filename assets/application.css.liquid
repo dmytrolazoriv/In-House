@@ -1,0 +1,527 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+body {
+  line-height: 1;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+blockquote, q {
+  quotes: none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: "";
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+* {
+  font-family: "Courier New", Courier, monospace;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  color: #000000;
+  line-height: 20px;
+}
+
+body {
+  font-size: 13px;
+  background-color: #ffffff;
+  background-size: 100%;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  padding-top: 100px;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+h1,
+.h1,
+h2,
+.h2,
+h3,
+.h3 {
+  font-family: "Georgia", "Times New Roman", Times, serif;
+  font-weight: 700;
+  color: #333333;
+}
+
+h1,
+.h1 {
+  font-size: 40px;
+  line-height: 40px;
+}
+
+h2,
+.h2 {
+  font-size: 13px;
+  line-height: 20px;
+}
+
+h3,
+.h3 {
+  font-size: 15px;
+  line-height: 20px;
+}
+
+a {
+  text-decoration: none;
+  color: #555555;
+}
+a:hover {
+  color: #000000;
+}
+
+.link-logo {
+  font-size: 55px;
+}
+
+.text-link {
+  font-family: "Courier New", Courier, monospace;
+  color: #555555;
+  fill: currentColor;
+}
+.text-link:hover {
+  color: #000000;
+}
+
+button[type=submit],
+.button {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -ms-appearance: none;
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  width: auto;
+  margin: 0;
+  padding: 0;
+  line-height: normal;
+  -webkit-font-smoothing: inherit;
+  -moz-osx-font-smoothing: inherit;
+  text-align: left;
+  display: inline-block;
+  width: 100%;
+  padding: 20px;
+  text-align: center;
+  font-size: 13px;
+  line-height: 20px;
+  background: #000000;
+  color: #ffffff;
+}
+button[type=submit]:disabled,
+.button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+button[type=submit]:not(:disabled):hover,
+.button:not(:disabled):hover {
+  background: #1a1a1a;
+}
+
+.styled-select {
+  position: relative;
+  color: #555555;
+}
+.styled-select select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -ms-appearance: none;
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  width: auto;
+  margin: 0;
+  padding: 0;
+  line-height: normal;
+  -webkit-font-smoothing: inherit;
+  -moz-osx-font-smoothing: inherit;
+  text-align: left;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 13px;
+  line-height: 20px;
+  color: currentColor;
+  width: 100%;
+  padding-right: 20px;
+}
+.styled-select .inline-icon {
+  position: absolute;
+  top: 0;
+  right: 0;
+  pointer-events: none;
+  font-size: 0.65em;
+}
+.text-white .styled-select {
+  color: #aaaaaa;
+}
+.text-white .styled-select:hover {
+  color: #ffffff;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+  white-space: nowrap;
+  -webkit-clip-path: inset(100%);
+          clip-path: inset(100%);
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+}
+
+.wrapper {
+  padding-left: 40px;
+  padding-right: 40px;
+}
+
+.grid {
+  display: -ms-grid;
+  display: grid;
+  grid-column-gap: 40px;
+  grid-row-gap: 40px;
+}
+.grid > * {
+  min-width: 0;
+  min-height: 0;
+}
+.grid.collapse {
+  grid-column-gap: 0;
+  grid-row-gap: 0;
+}
+
+.two-columns {
+  -ms-grid-columns: (1fr)[2];
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.valign-center {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+.valign-center > *:first-child {
+  margin-top: auto;
+}
+.valign-center > *:last-child {
+  margin-bottom: auto;
+}
+
+.ta-center {
+  text-align: center;
+}
+
+.text-white {
+  color: #ffffff;
+}
+.text-white h1,
+.text-white .h1,
+.text-white h2,
+.text-white .h2,
+.text-white h3,
+.text-white .h3,
+.text-white h4,
+.text-white .h4 {
+  color: #ffffff;
+}
+.text-white p,
+.text-white .accent-color {
+  color: #cccccc;
+}
+.text-white a {
+  color: #ffffff;
+}
+.text-white a:hover {
+  color: #ffffff;
+}
+
+.inline-icon {
+  display: inline-block;
+  vertical-align: middle;
+  fill: currentColor;
+  width: 1em;
+}
+.inline-icon svg {
+  fill: inherit;
+  max-width: 100%;
+  max-height: 100%;
+}
+.inline-icon svg g,
+.inline-icon svg path {
+  fill: inherit;
+}
+.inline-icon.current-color-stroke {
+  stroke: currentColor;
+  fill: none;
+}
+.inline-icon.current-color-stroke svg,
+.inline-icon.current-color-stroke g,
+.inline-icon.current-color-stroke path {
+  stroke: inherit;
+  fill: none;
+}
+
+#mini-cart {
+  display: none;
+}
+
+html.mini-cart-open #mini-cart {
+  display: block;
+}
+html.mini-cart-open main {
+  opacity: 0.3;
+}
+
+.product-card .link-to-product,
+.product-card img {
+  display: block;
+}
+.product-card .card-info {
+  margin-top: 20px;
+}
+.product-card .product-price {
+  color: #000000;
+  text-align: right;
+}
+.product-card .card-info-top {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+#header-global {
+  width: 100%;
+  height: 100px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  padding: 20px 40px;
+  background: #ffffff;
+  z-index: 1;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+#header-global .link-logo {
+  color: #000000;
+}
+
+.header-nav-list {
+  display: inline-block;
+  margin-left: 40px;
+}
+.header-nav-list li {
+  display: inline-block;
+}
+.header-nav-list li:not(:first-of-type) {
+  margin-left: 20px;
+}
+.header-nav-list .text-link {
+  color: #333333;
+}
+.header-nav-list .text-link:hover {
+  color: #000000;
+}
+
+.header-right {
+  margin-top: 18px;
+}
+.header-right > * {
+  display: inline-block;
+}
+.header-right > *:not(:first-child) {
+  margin-left: 20px;
+}
+
+.cart-link .cart-item-count {
+  display: inline-block;
+  background-color: #555555;
+  min-width: 20px;
+  height: 20px;
+  border-radius: 10px;
+  text-align: center;
+  color: #ffffff;
+  padding-top: 1px;
+}
+.cart-link:hover .cart-item-count {
+  background-color: #000000;
+}
+
+#footer-global {
+  margin-top: 100px;
+}
+#footer-global .footer-image-band {
+  height: 300px;
+  background-image: url('{{ "hero-stitch.jpg" | asset_img_url: "master" }}');
+  background-size: cover;
+}
+#footer-global .footer-inner {
+  width: 100%;
+  height: 100px;
+  background-color: #000000;
+  padding: 20px 40px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+#footer-global .nav-list {
+  display: inline-block;
+}
+#footer-global .nav-list li {
+  display: inline-block;
+}
+#footer-global .nav-list li:not(:first-of-type) {
+  margin-left: 20px;
+}
+#footer-global .nav-list:not(:first-of-type) {
+  margin-left: 20px;
+}
+#footer-global .secondary-menu-list .text-link:not(:hover) {
+  color: #aaaaaa;
+}
+#footer-global .footer-right {
+  margin-top: 18px;
+}
+#footer-global .footer-right > * {
+  display: inline-block;
+}
+#footer-global .footer-right > *:not(:first-child) {
+  margin-left: 20px;
+}
+.template-index #footer-global, .template-404 #footer-global, .template-product #footer-global, .template-search #footer-global {
+  margin-top: 0;
+}
+
+#page-collection #collection-image {
+  height: 33vh;
+  min-height: 340px;
+  max-height: 800px;
+  line-height: 0;
+}
+#page-collection #collection-image img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+#page-collection .collection-content {
+  padding-top: 40px;
+  -ms-grid-columns: (1fr)[12];
+  grid-template-columns: repeat(12, 1fr);
+}
+#page-collection .collection-sidebar {
+  -ms-grid-column-span: 2;
+  grid-column: span 2;
+  -ms-grid-row: 1;
+  grid-row: 1;
+}
+#page-collection .product-card:nth-of-type(odd) {
+  -ms-grid-column: 3;
+      grid-column-start: 3;
+  -ms-grid-column-span: 4;
+  grid-column-end: 7;
+}
+#page-collection .product-card:nth-of-type(even) {
+  -ms-grid-column: 7;
+      grid-column-start: 7;
+  -ms-grid-column-span: 4;
+  grid-column-end: 11;
+}
+#page-collection .product-card:nth-of-type(1), #page-collection .product-card:nth-of-type(2) {
+  -ms-grid-row: 1;
+  grid-row: 1;
+}
+#page-collection .collection-description {
+  margin-top: 20px;
+}
+#page-collection .collection-sorting {
+  margin-top: 40px;
+  border-top: 1px solid rgba(0, 0, 0, 0.15);
+  padding-top: 40px;
+}
