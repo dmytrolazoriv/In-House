@@ -1,0 +1,33 @@
+@font-face {
+    font-family: 'Noto Serif';
+    font-style: normal;
+    font-weight: 400;
+    font-stretch: 100%;
+    font-display: swap;
+    src: font-url('NotoSerif-Regular', 'woff2');
+  }
+
+  @font-face {
+    font-family: 'Noto Serif';
+    font-style: normal;
+    font-weight: 700;
+    font-stretch: 100%;
+    font-display: swap;
+    src: font-url('NotoSerif-Bold', 'woff2');
+  }
+  
+@font-face {
+    font-family: 'IBM Plex Mono';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: font-url('NotoSerif-Regular', 'woff2');
+  }
+
+  @font-face {
+    font-family: 'IBM Plex Mono';
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+    src: font-url('NotoSerif-Bold', 'woff2');
+  }
