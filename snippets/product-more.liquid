@@ -5,7 +5,7 @@
         <p>{{ 'product.more.vendor' | t: vendor: product.vendor }}</p>
     </div>
     
-    <div class="collection-content">
-        {% render 'collection-list', collection: collection, exclude: exclude, title: 'About the Collection' %}
+    <div class="collection-content wrapper">
+        {% render 'collection-list', collection: collection, exclude: exclude, title: 'You might also like...', content: false, show_button: true %}
     </div>
 </div>

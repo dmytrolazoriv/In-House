@@ -1,0 +1,34 @@
+#page-search {
+
+    #search-form-wrap {
+        grid-template-columns: repeat(12, 1fr);
+        align-items: center;
+        padding-top: $offset-global;
+        padding-bottom: $offset-global;
+        height: calc(100vh - #{$header-height});
+        background-color: $light-white;
+    }
+
+    .search-form,
+    .results-inner {
+        grid-column-start: 3;
+        grid-column-end: 11;
+    }
+
+    #search-results {
+        grid-template-columns: repeat(12, 1fr);
+        margin-top: $offset-global;
+        margin-bottom: $offset-global;
+    }
+
+    .results-grid {
+        margin-top: $offset-global;
+    }
+
+    &.search-performed {
+
+        #search-form-wrap {
+            max-height: 600px;
+        }
+    }
+}

@@ -221,14 +221,18 @@ $(document).ready(function() {
             alert(data.status + ' - ' + data.message + ': ' + data.description);
         },
         onCartButtonClick: function (event) {
-            event.preventDefault();
+            let
+                isCartOpen = $('html').hasClass('mini-cart-open'),
+                isInCart = window.location.href.indexOf('/cart') !== -1;
 
-            let isCartOpen = $('html').hasClass('mini-cart-open');
-
-            if (!isCartOpen) {
-                ajaxify.openCart();
-            } else {
-                ajaxify.closeCart();
+            if (!isInCart) {
+                event.preventDefault();
+                
+                if (!isCartOpen) {
+                    ajaxify.openCart();
+                } else {
+                    ajaxify.closeCart();
+                }
             }
         },
         openCart: function() {
@@ -240,7 +244,7 @@ $(document).ready(function() {
         init: function() {
             $(document).on('submit', addToCartFormSelector, ajaxify.onAddToCart);
 
-            $(document).on('click', '.js-cart-link', ajaxify.onCartButtonClick);
+            $(document).on('click', '.js-cart-link, .js-keep-shopping', ajaxify.onCartButtonClick);
         }
     };
 
@@ -361,4 +365,77 @@ $(document).ready(function() {
             };
 
             $(document).on('keyup', searchInputSelector, onSearchInputKeyup);
+
+
+            // Slideshows
+            let
+                slidesSelector = '.js-slides',
+                prevButtonSelector = '.js-slider-button-prev',
+                nextButtonSelector = '.js-slider-button-next';
+            
+            // Product
+            let
+                productSlideshowSelector = '.js-product-slideshow',
+                currentSlideSelector = '.js-current-slide',
+                productSlideshows = {
+                    onbeforeChange: function(event, slick, currentSlide, nextSlide) {
+                        let $currentSlide = slick.$slider.closest(productSlideshowSelector).find(currentSlideSelector);
+
+                        $currentSlide.text(nextSlide + 1);
+                    },
+                    setup: function($element) {
+                        let
+                            $slides = $element.find(slidesSelector),
+                            $prevButton = $element.find(prevButtonSelector),
+                            $nextButton = $element.find(nextButtonSelector),
+                            productSlideshowOptions = {
+                                fade: true,
+                                nextArrow: $nextButton, 
+                                prevArrow: $prevButton
+                            };
+                    
+                        if ($slides.children().length > 1) {
+                            $slides.on('beforeChange', productSlideshows.onbeforeChange).slick(productSlideshowOptions);
+                        }
+                    },
+                    init: function() {
+                        $(productSlideshowSelector).each(function() {
+                            productSlideshows.setup($(this));
+                        });
+                    }
+                };
+
+                productSlideshows.init();
+
+                // Section slideshow
+                let
+                    sectionSlideshowSelector = '.js-section-slideshow',
+                    sectionSlideshows = {
+                        setup: function($element) {
+                            let
+                                $slides = $element.find(slidesSelector),
+                                shouldAutoplay = $element.attr('data-autoplay') === 'true',
+                                autoplaySpeed = parseInt($element.attr('data-autoplay-speed')),
+                                $prevButton = $element.find(prevButtonSelector),
+                                $nextButton = $element.find(nextButtonSelector),
+                                sectionSlideshowOptions = {
+                                    fade: true,
+                                    nextArrow: $nextButton, 
+                                    prevArrow: $prevButton,
+                                    autoplay: shouldAutoplay,
+                                    autoplaySpeed: autoplaySpeed
+                                };
+
+                            if ($slides.children().length > 1) {
+                                $slides.slick(sectionSlideshowOptions);
+                            }
+                        },
+                        init: function() {
+                            $(sectionSlideshowSelector).each(function() {
+                                sectionSlideshows.setup($(this));
+                            });
+                        }
+                    };
+
+                    sectionSlideshows.init();
 });

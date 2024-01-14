@@ -1,0 +1,11 @@
+#page {
+
+    .page-inner {
+        max-width: 500px;
+        margin: 0 auto;
+    }
+
+    .page-content {
+        margin-top: $offset-global;
+    }
+}

@@ -7,15 +7,32 @@
 @import 'global/styleguide';
 @import 'global/layout';
 @import 'global/utils';
+@import 'global/slick';
 
 // Snippets
 @import 'snippets/inline-icon';
+@import 'snippets/quantity-picker';
+@import 'snippets/line-item';
+@import 'snippets/cart-contents';
 @import 'snippets/mini-cart';
 @import 'snippets/product-card';
+@import 'snippets/option-color';
+@import 'snippets/collection-list';
+@import 'snippets/product-more';
+@import 'snippets/search-form';
+@import 'snippets/slider-buttons';
 
 // Sections
 @import 'sections/header';
 @import 'sections/footer';
 @import 'sections/collection';
+@import 'sections/product';
+@import 'sections/cart';
+@import 'sections/search';
+@import 'sections/404';
+@import 'sections/slideshow';
+@import 'sections/content';
+@import 'sections/page';
+@import 'sections/about';
 
 // Templates

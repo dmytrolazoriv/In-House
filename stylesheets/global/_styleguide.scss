@@ -17,7 +17,7 @@ h1,
 
 h2,
 .h2 {
-    font-size: $type-body-med;
+    font-size: $type-headline-med;
     line-height: $line-global;
 }
 
@@ -39,6 +39,18 @@ h6,
 .h6 {
 }
 
+p {
+    font-family: $text-font;
+    font-size: $type-body-med;
+    line-height: $line-global;
+}
+
+.p-large {
+    font-family: $text-font;
+    font-size: $type-body-lg;
+    line-height: $line-global * 2;
+}
+
 a {
     text-decoration: none;
     color: $text-color;
@@ -49,6 +61,8 @@ a {
 }
 
 .link-logo {
+    display: inline-block;
+    width: 55px;
     font-size: 55px;
 }
 
@@ -66,8 +80,8 @@ button[type="submit"],
 .button {
     @include reset-input;
     display: inline-block;
-    width: 100%;
-    padding: $line-global;
+    width: auto;
+    padding: ($line-global / 2) $line-global;
     text-align: center;
     font-size: $type-body-med;
     line-height: $line-global;
@@ -81,6 +95,25 @@ button[type="submit"],
 
     &:not(:disabled):hover {
         background: lighten($black, 10%);
+    }
+
+    &:hover {
+        color: $white;
+    }
+ 
+    &.button-cta {
+        width: 100%;
+        padding: $line-global;
+    }
+
+    .text-white & {
+        background-color: $white;
+        color: $black;
+
+        &:hover {
+            background-color: darken($white, 10%);
+            color: $black;
+        }
     }
 }
 
@@ -112,5 +145,16 @@ button[type="submit"],
         &:hover {
             color: $white;
         }
+    }
+}
+
+blockquote {
+    p {
+        font-weight: $type-bold;
+    }
+
+    footer {
+        display: block;
+        margin-top: $line-global;
     }
 }

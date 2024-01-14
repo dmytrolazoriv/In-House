@@ -7,7 +7,7 @@
     <div class="line-info">
         <div class="info-content">
             <div class="line-title">
-                <a href="{{ item.url }}">
+                <a class="product-title h3" href="{{ item.url }}">
                     {{ item.product.title }}
                     {%- if item.quantity > 1 -%}
                         <span class="quantity">
@@ -15,11 +15,17 @@
                         </span>
                     {%- endif -%}
                 </a>
-                {{ item.variant.title }}
+                <p>
+                    {{ item.variant.title }}
+                </p>
             </div>
 
             <div class="line-price">
-            {{ item.line_price | money }}{% if item.quantity > 1 %} ({{ item.price | money }}/ea){% endif %}
+            {{ item.line_price | money }}
+            {% if item.quantity > 1 %}
+                <br>
+                ({{ item.price | money }}/ea)
+            {% endif %}
             </div>
         </div>
 
@@ -33,7 +39,7 @@
                 class="js-remove-line"
                 href="/cart/change?line={{ line_index }}&amp;quantity=0"
                 >
-                X
+                {% render 'icon-x', svg: 'icon-x.svg', alt: 'Remove' %}
             </a>
         </div>
     </div>

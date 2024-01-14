@@ -26,16 +26,19 @@
 <div id="page-product">
 
   {% comment %} Begin product top {% endcomment %}
-  <div id="product-top">
+  <div id="product-top" class="wrapper grid">
 
-    <div class="product-images">
-      {%- for image in product.images -%}
-        <div class="single-image">
-          {{ image | image_url: width: '600' | image_tag: loading: 'lazy' }}
-        </div>
-      {%- endfor -%}
+    <div class="product-images js-product-slideshow">
+      <div class="slides js-slides">
+        {%- for image in product.images -%}
+          <div class="single-image">
+            {{ image | image_url: width: '600' | image_tag: loading: 'lazy' }}
+          </div>
+        {%- endfor -%}
+      </div>
 
       {%- if product.images.size > 1 -%}
+        {% render 'slider-buttons' %}
         <div class="image-counter">
           <span class="js-current-slide">
             1
@@ -52,7 +55,7 @@
         </a>
       {%- endif -%}
 
-      <h1>{{ product.title }}</h1> 
+      <h1 class="product-title">{{ product.title }}</h1> 
 
       {% render 'add-to-cart-form' %}
     </div>
@@ -61,23 +64,21 @@
   {% comment %} End product top {% endcomment %}
 
   {% comment %} Begin product bottom {% endcomment %}
-  <div id="product-bottom">
+  <div id="product-bottom" class="wrapper grid">
 
     <div class="info-section description">
       <h3>{{ 'product.description.title' | t }}</h3>
       <p class="product-description">{{ description }}</p>
     </div>
 
-    <div class="shipping-returns">
-      <div class="info-section shipping">
-        <h4>{{ 'product.shipping.title' | t }}</h4>
-        <p>{{ shipping }}</p>
-      </div>
-  
-      <div class="info-section returns">
-        <h4>{{ 'product.returns.title' | t }}</h4>
-        <p>{{ returns }}</p>
-      </div>
+    <div class="info-section shipping">
+      <h3>{{ 'product.shipping.title' | t }}</h3>
+      <p>{{ shipping }}</p>
+    </div>
+
+    <div class="info-section returns">
+      <h3>{{ 'product.returns.title' | t }}</h3>
+      <p>{{ returns }}</p>
     </div>
 
   </div>
